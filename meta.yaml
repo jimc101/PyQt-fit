@@ -1,0 +1,37 @@
+{% set name = "PyQt-Fit" %}
+{% set version = "1.4.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+source:
+  path: ./
+  
+requirements:
+  host:
+    - python
+    - pip
+    - numpy
+    - cython>=0.29
+  build:
+    - {{ compiler('cxx') }}
+  run:
+    - python
+    - cython>=0.29
+    - numpy
+    - scipy
+    - matplotlib
+    - path>=13.0
+    - qtpy>=1.7.1
+
+about:
+  home: https://github.com/jimc101/PyQt-fit
+  license: GPL
+  license_family: GPL
+  summary: This project is a fork of Pierre de Reuille's PyQT-Fit
+
